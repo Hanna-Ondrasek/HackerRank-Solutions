@@ -71,15 +71,6 @@ import sys
 
 
 
-#
-# Complete the 'countSubarraysWithSumAndMaxAtMost' function below.
-#
-# The function is expected to return a LONG_INTEGER.
-# The function accepts following parameters:
-#  1. INTEGER_ARRAY nums
-#  2. LONG_INTEGER k
-#  3. LONG_INTEGER M
-#
 
 def countSubarraysWithSumAndMaxAtMost(nums, k, M):
     # Write your code here
@@ -113,90 +104,7 @@ def countSubarraysWithSumAndMaxAtMost(nums, k, M):
         
     return totalCount
         
-    
-    
-    
-    '''
-    res = 0
-    curSum = 0
-    prefixSum = {0 : 1}
-    
-    for n in nums:
-        # for M: make it so that any n cannot count toward
-        # a prefixSum 
-        curSum += n
-            
-        diff = curSum - k
-        res += prefixSum.get(diff, 0)
-        prefixSum[curSum] = 1 + prefixSum.get(curSum, 0)
-        
-    return res
-    '''
-    
-    
-    
-    # count = 0
-    # if len(nums) == 0:
-    #     return count
-    # '''
-    # pass 1: cur = 2
-    # '''
-    # cur = nums[0] 
-    # if (cur <= M) and (cur == k):
-    #     count = count + 1
-    
-    # i = 1
-    # # this needs to be while: while i < len(nums): add increment at bottom
-    # while i < len(nums):
-    #     #for i in nums:
-    #     '''
-    #     pass 1:
-    #     if 2 <= 2 (yes) and 2 == 3
-    #     this is false - count not incremented
-    #     pass 2: 
-    #     if 1 <= 2 (yes) and 1 == 3 (no)
-    #     not incremented
-    #     '''
-        
-    #     '''
-    #     pass 1: cur = 2 + -1 = 1
-    #     pass 2: 
-    #     cur = 1 + 2 = 3
-    #     3: 
-    #     3 + 1 = 4
-    #     '''
-    #     cur = cur + nums[i]
-    #     '''
-    #     pass 1: -1 > M (3) is untrue
-    #     pass 2: 2 > 3 is untrue , cur stays the same
-    #     '''
-    #     if nums[i] > M:
-    #         cur = 0
-    #     # logical break
-        
-    #     ''' 
-    #     pass 1: cur = 1, not 3, move on
-    #     pass 2: cur (3) = 3, count = 0 + 1 :)
-    #     ''' 
-    #     if cur == k:
-    #         count = count + 1
-        
-    #     i = i+1
-        
-    # return count
 
-if __name__ == '__main__':
-    nums_count = int(input().strip())
-
-    nums = []
-
-    for _ in range(nums_count):
-        nums_item = int(input().strip())
-        nums.append(nums_item)
-
-    k = int(input().strip())
-
-    M = int(input().strip())
 
     result = countSubarraysWithSumAndMaxAtMost(nums, k, M)
 
