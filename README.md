@@ -1,4 +1,4 @@
-# HackerRank-Solutions
+# HackerRank-Solutions - since HackerRank is apparently deleting solved problems now
 Subarrays with Given Sum and Bounded Maximum
 Given an integer array nums and integers k and M, count the number of contiguous subarrays whose sum equals k and whose maximum element is at most M.
 
@@ -109,4 +109,8 @@ def countSubarraysWithSumAndMaxAtMost(nums, k, M):
     result = countSubarraysWithSumAndMaxAtMost(nums, k, M)
 
     print(result)
+
+
+
+
 
