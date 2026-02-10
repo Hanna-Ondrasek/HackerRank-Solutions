@@ -776,6 +776,63 @@ string ltrim(const string &str) {
     return s;
 }
 
+
+# Remove Consecutive Duplicates from Sorted Linked List
+Write a function "deleteDuplicates" that removes consecutive duplicate nodes in-place, retaining only the first node of each code. Return the head of the resulting list.
+
+Example
+
+Input
+
+head = [1, 2, 2, 2, 3, 4, 4, 5]
+Output
+
+[1, 2, 3, 4, 5]
+Explanation
+
+- Given 1→2→2→2→3→4→4→5. 
+- Start at 1 (next is 2, no skip). 
+- Move to 2; skip all consecutive 2's so that 2 links directly to 3 (removing two extra 2 nodes). 
+- Now list is 1→2→3→4→4→5.
+- Move to 3 (next is 4, no skip). 
+- At 4, skip the duplicate 4 so it links to 5. 
+- The resulting list is 1→2→3→4→5.
+Input Format
+
+The first line n contains the length of the linked list
+The next n lines contains the elements of the linked list
+Example
+
+8
+1
+2
+2
+2
+3
+4
+4
+5
+here 8 is the length of the linked list followed by the nodes of the list.
+
+Constraints
+
+0 <= n <= 1000, where n is the number of nodes in the linked list
+-10^5 <= Node.val <= 10^5 for each node in the list
+The linked list is sorted in non-decreasing order: for each node u with successor v, u.val <= v.val
+Output Format
+
+The function returns one value: the head of the deduplicated list
+Sample Input 0
+
+0
+Sample Input 1
+
+1
+1
+Sample Output 1
+
+1 
+
 string rtrim(const string &str) {
     string s(str);
 
@@ -788,3 +845,88 @@ string rtrim(const string &str) {
 }
 
 
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+class SinglyLinkedListNode:
+    def __init__(self, node_data):
+        self.data = node_data
+        self.next = None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def insert_node(self, node_data):
+        node = SinglyLinkedListNode(node_data)
+
+        if not self.head:
+            self.head = node
+        else:
+            self.tail.next = node
+
+        self.tail = node
+
+def print_singly_linked_list(node, sep):
+    while node:
+        print(node.data, end='')
+
+        node = node.next
+
+        if node:
+            print(sep, end='')
+
+
+
+#
+# Complete the 'deleteDuplicates' function below.
+#
+# The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+# The function accepts INTEGER_SINGLY_LINKED_LIST head as parameter.
+#
+
+#
+# For your reference:
+#
+# SinglyLinkedListNode:
+#     int data
+#     SinglyLinkedListNode next
+#
+#
+
+def deleteDuplicates(head):
+    # Write your code here
+    
+    cur = head
+    while cur: # while cur exists
+    # while cur.next exists AND cur and cur.next 
+    # are of the same value ,delete
+    # ok its .data not .val here 
+        while cur.next and cur.next.data == cur.data:
+            # skipparoo
+            cur.next = cur.next.next
+        # set cur to cur.next is non equal
+        cur = cur.next
+        
+    return head
+        
+
+if __name__ == '__main__':
+    head_count = int(input().strip())
+
+    head = SinglyLinkedList()
+
+    for _ in range(head_count):
+        head_item = int(input().strip())
+        head.insert_node(head_item)
+
+    result = deleteDuplicates(head.head)
+
+    print_singly_linked_list(result, '\n')
+    print()
